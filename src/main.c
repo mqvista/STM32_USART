@@ -8,9 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "diag/Trace.h"
+#include "usart.h"
 
-#include "Timer.h"
-#include "BlinkLed.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -40,11 +39,7 @@
 // so please adjust the PLL settings in system/src/cmsis/system_stm32f10x.c
 //
 
-// ----- Timing definitions -------------------------------------------------
 
-// Keep the LED on for 2/3 of a second.
-#define BLINK_ON_TICKS  (TIMER_FREQUENCY_HZ * 3 / 4)
-#define BLINK_OFF_TICKS (TIMER_FREQUENCY_HZ - BLINK_ON_TICKS)
 
 // ----- main() ---------------------------------------------------------------
 
@@ -60,6 +55,7 @@ main(int argc, char* argv[])
 {
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
+  Init_USART();
 
 
 
